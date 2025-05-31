@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import uuid from 'react-native-uuid';
 import { colors } from '../theme';
 
-class AddCountry extends React.Component {
+class AddCity extends React.Component {
   state = {
     city: '',
     country: '',
@@ -23,7 +23,7 @@ class AddCountry extends React.Component {
       city,
       country,
       id: uuid.v4(),
-      locations: [],
+      currencies: [],
     };
     this.props.addCity(newCity); // ✅ State lifted up, no params anymore
     this.setState(
@@ -32,7 +32,7 @@ class AddCountry extends React.Component {
         country: '',
       },
       () => {
-        this.props.navigation.navigate('Cities');
+        this.props.navigation.navigate('CitiesNav');
       }
     );
   };
@@ -40,10 +40,10 @@ class AddCountry extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.heading}>Countries</Text>
+        <Text style={styles.heading}>Cities</Text>
         <TextInput
-          placeholder="Country name"
-          onChangeText={(val) => this.onChangeText('country', val)}
+          placeholder="City name"
+          onChangeText={(val) => this.onChangeText('city', val)}
           style={styles.input}
           value={this.state.city}
         />
@@ -55,7 +55,7 @@ class AddCountry extends React.Component {
         />
         <TouchableOpacity onPress={this.submit}>
           <View style={styles.button}>
-            <Text style={styles.buttonText}>Add Country</Text>
+            <Text style={styles.buttonText}>Add City</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -94,4 +94,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddCountry;
+export default AddCity;

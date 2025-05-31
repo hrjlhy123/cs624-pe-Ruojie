@@ -19,20 +19,20 @@ class AddCountry extends React.Component {
       alert('please complete form');
       return;
     }
-    const newCity = {
+    const newCountry = {
       city,
       country,
       id: uuid.v4(),
-      locations: [],
+      currencies: [],
     };
-    this.props.addCity(newCity); // ✅ State lifted up, no params anymore
+    this.props.addCountry(newCountry); // ✅ State lifted up, no params anymore
     this.setState(
       {
         city: '',
         country: '',
       },
       () => {
-        this.props.navigation.navigate('Cities');
+        this.props.navigation.navigate('CountriesNav');
       }
     );
   };
@@ -42,8 +42,8 @@ class AddCountry extends React.Component {
       <View style={styles.container}>
         <Text style={styles.heading}>Countries</Text>
         <TextInput
-          placeholder="Country name"
-          onChangeText={(val) => this.onChangeText('country', val)}
+          placeholder="City name"
+          onChangeText={(val) => this.onChangeText('city', val)}
           style={styles.input}
           value={this.state.city}
         />
